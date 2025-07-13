@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Wordle Clone</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='site.css') }}">
+</head>
+
+<body>
+  <h1 id="title">Wordle Game</h1>
+  <hr>
+  <p>Ready for a word challenge? Let’s get started.</p>
+
+  <!-- ✅ Wrap controls in a <div> not a <form> -->
+  <div>
+    <label for="word-length">Choose word length:</label>
+    <select id="word-length">
+      {% for i in range(4, 11) %}
+        <option value="{{ i }}">{{ i }}</option>
+      {% endfor %}
+    </select>
+    <!-- ✅ This MUST have type="button" -->
+    <button type="button" onclick="startGame()">Start Game</button>
+  </div>
+
+  <div id="board"></div>
+  <h1 id="answer"></h1>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
