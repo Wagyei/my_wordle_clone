@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 import random
-import time
+import os
 from extract_words import extract_words
 
 app = Flask(__name__)
@@ -28,4 +28,5 @@ def check_word():
 
 if __name__ == "__main__":
     print(">>> Flask is starting...")
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Use environment PORT if set, else 5000
+    app.run(host="0.0.0.0", port=port, debug=True)
